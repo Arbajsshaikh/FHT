@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-from ipywidgets import interact
 
 # Assuming your data is stored in the 'filtered_data' DataFrame
 # If not, replace 'filtered_data' with your DataFrame name
@@ -34,14 +32,3 @@ selected_data = selected_data.sort_values(by='Qty', ascending=False)
 
 # Display the data
 st.table(selected_data[['Medicine Name', 'Qty']])
-
-# Display a bar plot using Plotly Express
-if st.checkbox('Show Bar Plot'):
-    fig = px.bar(
-        selected_data,
-        x='Medicine Name',
-        y='Qty',
-        title=f'Medicine Qty in {district_dropdown}, Shop-Code: {shop_code_dropdown}',
-        labels={'Qty': 'Quantity'},
-    )
-    st.plotly_chart(fig)
