@@ -3,8 +3,9 @@ import pandas as pd
 
 # Assuming your data is stored in the 'filtered_data' DataFrame
 # If not, replace 'filtered_data' with your DataFrame name
+URL='DIST_Franchise-Orders-2022-23.zip'
 # For example, you can load data from a CSV file using pd.read_csv('your_data.csv')
-filtered_data = pd.read_csv('DIST_Franchise-Orders-2022-23.csv')
+filtered_data = pd.read_csv(URL)
 
 # Create a dropdown widget for selecting a District
 district_dropdown = st.selectbox('Select District:', filtered_data['DISTRICT'].unique())
