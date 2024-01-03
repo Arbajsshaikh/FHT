@@ -1,11 +1,23 @@
 import streamlit as st
 import pandas as pd
+import zipfile
 
+
+# Specify the path to the ZIP file
+zip_file_path = 'DIST_Franchise-Orders-2022-23.zip'
+
+# Open the ZIP file
+with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+    # Extract the contents (assuming there is only one CSV file in the ZIP)
+    csv_file_name = zip_ref.namelist()[0]
+    with zip_ref.open(csv_file_name) as file:
+        # Read the CSV file into a DataFrame
+        filtered_data = pd.read_csv(file)
 # Assuming your data is stored in the 'filtered_data' DataFrame
 # If not, replace 'filtered_data' with your DataFrame name
-URL='DIST_Franchise-Orders-2022-23.csv'
+# URL='DIST_Franchise-Orders-2022-23.csv'
 # For example, you can load data from a CSV file using pd.read_csv('your_data.csv')
-filtered_data = pd.read_csv(URL)
+# filtered_data = pd.read_csv(URL)
 
 # Create a dropdown widget for selecting a District
 district_dropdown = st.selectbox('Select District:', filtered_data['DISTRICT'].unique())
